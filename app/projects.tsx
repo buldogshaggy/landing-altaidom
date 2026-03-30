@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { ProjectCard } from "@/components/sections/project-card";
 
 const projects = [
@@ -8,136 +10,124 @@ const projects = [
     id: 1,
     title: "Дом в Алматы",
     images: [
-      "images/projects/1_1.jpg",
-      "images/projects/1_2.jpg",
-      "images/projects/1_3.jpg",
+      "/images/projects/1_1.jpg",
+      "/images/projects/1_2.jpg",
+      "/images/projects/1_3.jpg",
     ],
   },
   {
     id: 2,
     title: "Дом в Астане",
-    images: ["images/projects/2_1.jpg"],
+    images: ["/images/projects/2_1.jpg"],
   },
   {
     id: 3,
     title: "Дом в Шымкенте",
-    images: ["images/projects/3_1.jpg"],
+    images: ["/images/projects/3_1.jpg"],
   },
   {
     id: 4,
     title: "Дом в Караганде",
-    images: ["images/projects/4_1.jpg"],
+    images: ["/images/projects/4_1.jpg"],
   },
   {
     id: 5,
     title: "Дом в Костанае",
-    images: ["images/projects/5_1.jpg"],
+    images: ["/images/projects/5_1.jpg"],
   },
   {
     id: 6,
     title: "Дом в Павлодаре",
-    images: ["images/projects/6_1.jpg"],
-  },
-  {
-    id: 7,
-    title: "Дом в Караганде",
-    images: ["images/projects/4_1.jpg"],
-  },
-  {
-    id: 8,
-    title: "Дом в Костанае",
-    images: ["images/projects/5_1.jpg"],
-  },
-  {
-    id: 9,
-    title: "Дом в Павлодаре",
-    images: ["images/projects/6_1.jpg"],
+    images: ["/images/projects/6_1.jpg"],
   },
 ];
 
 export function Projects() {
-  const [isExpanded, setExpanded] = useState(false);
-  const hiddenProjectsRef = useRef<HTMLDivElement | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: "start",
+    containScroll: "trimSnaps",
+    dragFree: false,
+    skipSnaps: false,
+    watchDrag: false,
+  });
 
-  const visibleProjects = projects.slice(0, 3);
-  const hiddenProjects = projects.slice(3);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
 
-  const handleToggle = () => {
-    if (!isExpanded) {
-      setExpanded(true);
+  const updateButtons = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
 
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          hiddenProjectsRef.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }, 220);
-      });
+  useEffect(() => {
+    if (!emblaApi) return;
 
-      return;
-    }
+    updateButtons();
+    emblaApi.on("select", updateButtons);
+    emblaApi.on("reInit", updateButtons);
 
-    setExpanded(false);
-  };
+    return () => {
+      emblaApi.off("select", updateButtons);
+      emblaApi.off("reInit", updateButtons);
+    };
+  }, [emblaApi, updateButtons]);
+
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
 
   return (
     <section className="mx-auto w-full max-w-[1534px] px-4 py-16 md:px-6 md:py-20 lg:px-8 lg:py-24">
-      <div className="mb-10">
+      <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <h2 className="text-3xl uppercase md:text-5xl lg:text-[64px]">
           <span className="text-[var(--color-gold)]">Реализованные</span>{" "}
           <span className="text-[#4a4a4a]">проекты</span>
         </h2>
-      </div>
 
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3">
-        {visibleProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            images={project.images}
-          />
-        ))}
-      </div>
-
-      <div
-        className={`overflow-hidden transition-all duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          isExpanded ? "max-h-[2200px]" : "max-h-0"
-        }`}
-      >
-        <div
-          ref={hiddenProjectsRef}
-          className="grid grid-cols-1 gap-10 pt-10 md:grid-cols-2 xl:grid-cols-3"
+        <Link
+          href="/projects"
+          className="text-base uppercase tracking-wide text-[#4a4a4a] transition hover:text-[var(--color-gold)] md:mb-2"
         >
-          {hiddenProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`transform-gpu transition-all duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                isExpanded
-                  ? "translate-y-0 scale-100 opacity-100 blur-0"
-                  : "pointer-events-none translate-y-8 scale-[0.985] opacity-0 blur-[2px]"
-              }`}
-              style={{
-                transitionDelay: isExpanded ? `${index * 140}ms` : "0ms",
-              }}
-            >
-              <ProjectCard title={project.title} images={project.images} />
-            </div>
-          ))}
-        </div>
+          Смотреть все
+        </Link>
       </div>
 
-      {projects.length > 3 && (
-        <div className="mt-10 flex justify-end">
-          <button
-            type="button"
-            onClick={handleToggle}
-            className="rounded-full bg-[var(--color-green)] px-6 py-3 text-white transition hover:bg-black/80"
-          >
-            {isExpanded ? "Свернуть" : "Смотреть все"}
-          </button>
+      <div className="relative">
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="-ml-6 flex">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="min-w-0 shrink-0 basis-full pl-6 md:basis-1/2 xl:basis-1/3"
+              >
+                <ProjectCard title={project.title} images={project.images} />
+              </div>
+            ))}
+          </div>
         </div>
-      )}
+        <button
+          type="button"
+          onClick={scrollPrev}
+          disabled={!canScrollPrev}
+          className="absolute top-1/2 left-0 z-10 hidden -translate-x-[120%] -translate-y-1/2 md:flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white"
+          aria-label="Предыдущие проекты"
+        >
+          ‹
+        </button>
+
+        {/* 🔥 СТРЕЛКА ВПРАВО */}
+        <button
+          type="button"
+          onClick={scrollNext}
+          disabled={!canScrollNext}
+          className="absolute top-1/2 right-0 z-10 hidden translate-x-[120%] -translate-y-1/2 md:flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
+          aria-label="Следующие проекты"
+        >
+          ›
+        </button>
+
+      </div>
     </section>
   );
 }
