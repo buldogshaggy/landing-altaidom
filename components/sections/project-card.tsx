@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { createPortal } from "react-dom";
 
 type ProjectCardProps = {
   title: string;
@@ -152,80 +153,78 @@ export function ProjectCard({ title, images }: ProjectCardProps) {
         </div>
       </article>
 
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4"
-          onClick={() => setIsOpen(false)}
-        >
+      {isOpen &&
+        createPortal(
           <div
-            className="relative w-full max-w-6xl"
-            onClick={(event) => event.stopPropagation()}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 px-4 py-8"
+            onClick={() => setIsOpen(false)}
           >
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-2xl text-white transition hover:bg-white/25"
-              aria-label="Закрыть"
+            <div
+              className="relative flex h-full w-full items-center justify-center"
+              onClick={(event) => event.stopPropagation()}
             >
-              ×
-            </button>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="absolute top-4 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-2xl text-white transition hover:bg-white/25"
+                aria-label="Закрыть"
+              >
+                ×
+              </button>
 
-            {images.length > 1 && (
-              <>
+              {images.length > 1 && (
                 <button
                   type="button"
                   onClick={showPrev}
-                  className="absolute top-1/2 left-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl text-white transition hover:bg-white/25"
+                  className="absolute top-1/2 left-4 z-30 hidden h-12 w-12 -translate-y-1/2 translate-x-[130%] items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
                   aria-label="Предыдущее фото"
                 >
                   ‹
                 </button>
+              )}
 
+              <img
+                src={images[modalIndex]}
+                alt={`${title} ${modalIndex + 1}`}
+                className="block max-h-[90vh] max-w-[90vw] object-contain"
+              />
+
+              {images.length > 1 && (
                 <button
                   type="button"
                   onClick={showNext}
-                  className="absolute top-1/2 right-3 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl text-white transition hover:bg-white/25"
+                  className="absolute top-1/2 right-4 z-30 hidden h-12 w-12 -translate-y-1/2 -translate-x-[130%] items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
                   aria-label="Следующее фото"
                 >
                   ›
                 </button>
-              </>
-            )}
+              )}
 
-            <div className="overflow-hidden rounded-2xl bg-black">
-              <img
-                src={images[modalIndex]}
-                alt={`${title} ${modalIndex + 1}`}
-                className="block max-h-[85vh] w-full object-contain"
-              />
-            </div>
-
-            {images.length > 1 && (
-              <div className="mt-4 flex justify-center gap-2">
-                {images.map((image, index) => (
+              {images.length > 1 && (
+                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-3 md:hidden">
                   <button
-                    key={index}
                     type="button"
-                    onClick={() => setModalIndex(index)}
-                    className={`overflow-hidden rounded-md border transition ${
-                      index === modalIndex
-                        ? "border-white"
-                        : "border-white/20 hover:border-white/60"
-                    }`}
-                    aria-label={`Открыть миниатюру ${index + 1}`}
+                    onClick={showPrev}
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white"
+                    aria-label="Предыдущее фото"
                   >
-                    <img
-                      src={image}
-                      alt={`${title} миниатюра ${index + 1}`}
-                      className="block h-14 w-20 object-cover"
-                    />
+                    ‹
                   </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+
+                  <button
+                    type="button"
+                    onClick={showNext}
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white"
+                    aria-label="Следующее фото"
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

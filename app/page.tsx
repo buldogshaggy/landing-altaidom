@@ -1,6 +1,7 @@
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "./projects";
+import { Trust } from "@/components/sections/trust";
 
 export default function Home() {
   return (
@@ -11,7 +12,9 @@ export default function Home() {
         </div>  
         <Hero />
       </section>
+
       <Projects />
+      <Trust />
     </main>
   );
 }
