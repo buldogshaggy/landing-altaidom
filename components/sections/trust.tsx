@@ -9,11 +9,11 @@ import {
 export const Trust = () => {
   const items = [
     {
-      text: "Собственное производство домов из клееного бруса расположенное на Алтае",
+      text: <>Собственное производство домов из клееного бруса расположенное<br></br> на Алтае</>,
       icon: Factory,
     },
     {
-      text: "Реализовано более 2300 объектов за 17 лет работы",
+      text: <>Реализовано более 2300 объектов<br></br> за 17 лет работы</>,
       icon: Building2,
     },
     {
@@ -21,7 +21,7 @@ export const Trust = () => {
       icon: Briefcase,
     },
     {
-      text: "Команда опытных производственников и проектировщиков",
+      text: <>Команда опытных производственников<br></br> и проектировщиков</>,
       icon: Users,
     },
     {
@@ -34,7 +34,7 @@ export const Trust = () => {
     <section className="py-10 md:py-14">
       <div className="mx-auto w-full max-w-[1534px] px-4 md:px-6 lg:px-8">
         
-        <h2 className="mb-6 text-xl md:text-4xl font-medium text-[#1f1f1f]">
+        <h2 className="mb-6 text-xl md:text-4xl font-medium text-[#4a4a4a]">
           Вы можете нам доверять потому что у нас:
         </h2>
 

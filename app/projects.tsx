@@ -110,7 +110,7 @@ export function Projects() {
           type="button"
           onClick={scrollPrev}
           disabled={!canScrollPrev}
-          className="absolute top-1/2 left-0 z-10 hidden -translate-x-[120%] -translate-y-1/2 md:flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white"
+          className="absolute top-1/2 left-2 z-10 flex -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white text-xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
           aria-label="Предыдущие проекты"
         >
           ‹
@@ -121,7 +121,7 @@ export function Projects() {
           type="button"
           onClick={scrollNext}
           disabled={!canScrollNext}
-          className="absolute top-1/2 right-0 z-10 hidden translate-x-[120%] -translate-y-1/2 md:flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
+          className="absolute top-1/2 right-2 z-10 flex -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white text-xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
           aria-label="Следующие проекты"
         >
           ›

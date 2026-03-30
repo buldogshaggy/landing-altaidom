@@ -2,6 +2,8 @@ import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "./projects";
 import { Trust } from "@/components/sections/trust";
+import { MapForm } from "@/components/sections/mapform";
+import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
 
       <Projects />
       <Trust />
+      <MapForm />
+      <Footer />
     </main>
   );
 }
