@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,16 +15,16 @@ export function Header() {
       <header className="flex items-center justify-between gap-10 py-4 md:py-5">
         
         {/* ЛОГО */}
-        <a href="/">
+        <Link href="/" className="flex flex-col">
           <img
-            src="images/logo/logo-one-line.svg"
+            src="/images/logo/logo-one-line.svg"
             alt="Логотип Алтайлес"
             className="h-8 md:h-10 w-auto"
           />
           <p className="text-xs md:text-lg uppercase text-[var(--color-gold)]">
             19 лет роста
           </p>
-        </a>
+        </Link>
 
         {/* ДЕСКТОП МЕНЮ */}
         <nav className="hidden md:flex flex-1 items-center justify-center gap-10 text-lg">

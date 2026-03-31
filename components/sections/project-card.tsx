@@ -176,7 +176,7 @@ export function ProjectCard({ title, images }: ProjectCardProps) {
                 <button
                   type="button"
                   onClick={showPrev}
-                  className="absolute top-1/2 left-4 z-30 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
+                  className="absolute top-1/2 -left-2 z-30 hidden h-12 w-12 -translate-x-full -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-[var(--color-green)] hover:text-white md:flex"
                   aria-label="Предыдущее фото"
                 >
                   ‹
@@ -193,7 +193,7 @@ export function ProjectCard({ title, images }: ProjectCardProps) {
                 <button
                   type="button"
                   onClick={showNext}
-                  className="absolute top-1/2 right-4 z-30 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
+                  className="absolute top-1/2 -right-2 z-30 hidden h-12 w-12 translate-x-full -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-[var(--color-green)] hover:text-white md:flex"
                   aria-label="Следующее фото"
                 >
                   ›
