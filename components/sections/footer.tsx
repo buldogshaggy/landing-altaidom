@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col relative overflow-hidden pb-[120px] md:pb-[260px]">
+    <footer className="flex flex-col relative overflow-hidden pb-[50px] md:pb-[260px]">
       
       {/* ОСНОВНОЙ БЛОК */}
       <div className="relative z-10 mx-auto w-full max-w-[1534px] px-4 md:px-6 lg:px-8 py-10 md:py-14">
@@ -12,18 +11,15 @@ export const Footer = () => {
           
           {/* ЛОГО */}
           <div>
-            <Link href="#" className="block">
               <Image
                 src="images/logo/slogan2.png"
                 alt="Сила леса"
                 width={200}
                 height={150}
-                className="mx-auto lg:mx-0"
+                className="lg:mx-0 w-auto"
               />
-            </Link>
           </div>
 
-          {/* (пустой блок как в оригинале nav hidden) */}
           <div />
 
           {/* КОНТАКТЫ */}

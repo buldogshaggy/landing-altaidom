@@ -8,7 +8,7 @@ import { Footer } from "@/components/sections/footer";
 export default function Home() {
   return (
     <main>
-      <section className="flex min-h-screen flex-col">
+      <section className="flex sm:min-h-screen md:min-h-screen lg:min-h-screen flex-col">
         <div className="mx-auto w-full max-w-[1534px] px-4 md:px-6 lg:px-8">
           <Header />
         </div>  

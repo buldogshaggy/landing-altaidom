@@ -28,7 +28,7 @@ export const MapForm = () => {
               <span className="text-[#D7B56D]">ОСТАВЬТЕ ЗАЯВКУ</span>
             </h2>
 
-            <p className="mb-3 text-xl text-gray-500">
+            <p className="mb-3 text-base text-[var(--color-gray)]">
               и получите лучшее предложение
             </p>
 
@@ -38,6 +38,7 @@ export const MapForm = () => {
                 placeholder="Имя и фамилия"
                 className="w-full border border-gray-300 px-4 py-3 outline-none focus:border-[#2E7D5B]"
                 id="name"
+                autoComplete="name"
               />
 
               <input
@@ -45,18 +46,19 @@ export const MapForm = () => {
                 placeholder="Номер телефона"
                 className="w-full border border-gray-300 px-4 py-3 outline-none focus:border-[#2E7D5B]"
                 id="phone"
+                autoComplete="tel"
               />
 
               <div className="text-xs text-gray-500 space-y-1">
-                <label className="flex gap-2">
-                  <input id="personal" type="checkbox" className="mt-1" />
+                <label className="flex gap-2 items-center">
+                  <input id="personal" type="checkbox" className="" />
                   <span>
                     Согласен на обработку персональных данных
                   </span>
                 </label>
 
-                <label className="flex items-start gap-2">
-                  <input id="policy" type="checkbox" className="mt-1" />
+                <label className="flex items-start gap-2 items-center">
+                  <input id="policy" type="checkbox" className="" />
                   <span>
                     Подтверждаю, что ознакомлен с политикой
                   </span>

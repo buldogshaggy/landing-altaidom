@@ -159,24 +159,24 @@ export function ProjectCard({ title, images }: ProjectCardProps) {
             className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 px-4 py-8"
             onClick={() => setIsOpen(false)}
           >
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-2xl text-white transition hover:bg-white/25"
+              aria-label="Закрыть"
+            >
+              ×
+            </button>
+
             <div
-              className="relative flex h-full w-full items-center justify-center"
+              className="relative flex items-center justify-center"
               onClick={(event) => event.stopPropagation()}
             >
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="absolute top-4 right-4 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-2xl text-white transition hover:bg-white/25"
-                aria-label="Закрыть"
-              >
-                ×
-              </button>
-
               {images.length > 1 && (
                 <button
                   type="button"
                   onClick={showPrev}
-                  className="absolute top-1/2 left-4 z-30 hidden h-12 w-12 -translate-y-1/2 translate-x-[130%] items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
+                  className="absolute top-1/2 left-4 z-30 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
                   aria-label="Предыдущее фото"
                 >
                   ‹
@@ -193,7 +193,7 @@ export function ProjectCard({ title, images }: ProjectCardProps) {
                 <button
                   type="button"
                   onClick={showNext}
-                  className="absolute top-1/2 right-4 z-30 hidden h-12 w-12 -translate-y-1/2 -translate-x-[130%] items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
+                  className="absolute top-1/2 right-4 z-30 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xl text-black shadow-lg transition hover:bg-black hover:text-white md:flex"
                   aria-label="Следующее фото"
                 >
                   ›

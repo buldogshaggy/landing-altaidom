@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Алтайдом",
   description: "",
   icons: {
-    icon: "/icon-white.svg?v=2",
+    icon: "icon.svg?v=2",
   },
 };
 

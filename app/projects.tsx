@@ -4,43 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ProjectCard } from "@/components/sections/project-card";
-
-const projects = [
-  {
-    id: 1,
-    title: "Дом в Алматы",
-    images: [
-      "images/projects/1_1.jpg",
-      "images/projects/1_2.jpg",
-      "images/projects/1_3.jpg",
-    ],
-  },
-  {
-    id: 2,
-    title: "Дом в Астане",
-    images: ["images/projects/2_1.jpg"],
-  },
-  {
-    id: 3,
-    title: "Дом в Шымкенте",
-    images: ["images/projects/3_1.jpg"],
-  },
-  {
-    id: 4,
-    title: "Дом в Караганде",
-    images: ["images/projects/4_1.jpg"],
-  },
-  {
-    id: 5,
-    title: "Дом в Костанае",
-    images: ["images/projects/5_1.jpg"],
-  },
-  {
-    id: 6,
-    title: "Дом в Павлодаре",
-    images: ["images/projects/6_1.jpg"],
-  },
-];
+import { projects } from "@/lib/projects";
 
 export function Projects() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -110,7 +74,7 @@ export function Projects() {
           type="button"
           onClick={scrollPrev}
           disabled={!canScrollPrev}
-          className="absolute top-1/2 left-2 z-10 flex -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white text-xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
+          className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 md:-translate-x-1/2 items-center justify-center rounded-full bg-white text-xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
           aria-label="Предыдущие проекты"
         >
           ‹
@@ -121,7 +85,7 @@ export function Projects() {
           type="button"
           onClick={scrollNext}
           disabled={!canScrollNext}
-          className="absolute top-1/2 right-2 z-10 flex -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-white text-xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
+          className="absolute top-1/2 right-0 z-10 flex -translate-y-1/2 md:translate-x-1/2 h-10 w-10 items-center justify-center rounded-full bg-white text-xl text-[var(--color-green)] shadow-lg transition hover:bg-[var(--color-green)] hover:text-white disabled:opacity-30"
           aria-label="Следующие проекты"
         >
           ›
