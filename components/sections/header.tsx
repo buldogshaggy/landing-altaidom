@@ -17,7 +17,7 @@ export function Header() {
         {/* ЛОГО */}
         <Link href="/" className="flex flex-col">
           <img
-            src="/images/logo/logo-one-line.svg"
+            src="images/logo/logo-one-line.svg"
             alt="Логотип Алтайлес"
             className="h-8 md:h-10 w-auto"
           />

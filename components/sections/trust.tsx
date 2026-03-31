@@ -35,7 +35,7 @@ export const Trust = () => {
       <div className="mx-auto w-full max-w-[1534px] px-4 md:px-6 lg:px-8">
         
         <h2 className="mb-6 text-xl md:text-4xl font-medium text-[#4a4a4a]">
-          Вы можете нам доверять потому что у нас:
+          Вы можете нам <span className="text-[var(--color-gold)]">доверять</span> потому что у нас:
         </h2>
 
         <div className="p-4 md:p-6">
@@ -43,7 +43,7 @@ export const Trust = () => {
             {items.map(({ text, icon: Icon }, index) => (
               <div
                 key={index}
-                className="flex min-h-[140px] flex-col items-center justify-start rounded-lg bg-white p-4 text-center"
+                className="flex min-h-[140px] flex-col items-center justify-start bg-white p-4 text-center rounded-4xl border-[2px] border-[var(--color-green)]"
               >
                 {/* Иконка */}
                 <Icon className="mb-3 h-8 w-8 text-[var(--color-green)]" />
