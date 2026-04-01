@@ -8,7 +8,7 @@ import { projects } from "@/lib/projects";
 
 export function Projects() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
+    loop: true,
     align: "start",
     containScroll: "trimSnaps",
     dragFree: false,

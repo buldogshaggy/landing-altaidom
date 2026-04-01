@@ -1,6 +1,6 @@
 import {
   Factory,
-  Building2,
+  House,
   Briefcase,
   Users,
   Truck,
@@ -14,7 +14,7 @@ export const Trust = () => {
     },
     {
       text: <>Реализовано более 2300 объектов<br></br> за 17 лет работы</>,
-      icon: Building2,
+      icon: House,
     },
     {
       text: "Профессиональный подход к проектам любой сложности",

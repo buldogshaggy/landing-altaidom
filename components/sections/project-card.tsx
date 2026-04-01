@@ -16,6 +16,7 @@ export function ProjectCard({ title, images }: ProjectCardProps) {
     containScroll: "trimSnaps",
     dragFree: false,
     skipSnaps: false,
+    watchDrag: images.length > 1,
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
