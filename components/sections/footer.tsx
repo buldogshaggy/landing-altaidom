@@ -15,8 +15,9 @@ export const Footer = () => {
                 src="images/logo/slogan2.png"
                 alt="Сила леса"
                 width={200}
-                height={150}
-                className="lg:mx-0 w-auto"
+                height={120}
+                className="lg:mx-0 w-auto h-auto"
+                priority
               />
           </div>
 
@@ -28,7 +29,7 @@ export const Footer = () => {
               
               <div>
                 <a href="tel:+73852239999" className="text-[22px] hover:text-[var(--color-green)]">
-                  +7 (3852) 23-99-99
+                  8 800 700 12 84
                 </a>
                 <p className="text-sm text-gray-500 mt-1">
                   Работаем с 8.00 до 17.00
@@ -60,7 +61,7 @@ export const Footer = () => {
                 <Image src="images/logo/vk.svg" alt="" width={40} height={40} />
               </a>
 
-              <a href="https://max.ru/id2225086755_biz" target="_blank">
+              <a href="https://max.ru/id2224095725_biz" target="_blank">
                 <Image src="images/logo/logo-max.svg" alt="" width={40} height={40} />
               </a>
             </div>
@@ -76,6 +77,7 @@ export const Footer = () => {
         width={1920}
         height={300}
         className="pointer-events-none absolute bottom-0 left-0 z-0 w-full"
+        priority
       />
 
     </footer>

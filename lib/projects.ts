@@ -25,7 +25,6 @@ export const projects = [
     id: 5,
     title: "Семей",
     images: [
-      "images/projects/Семей_1.jpg",
       "images/projects/Семей_2.jpg",
     ],
   },

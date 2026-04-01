@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Алтайдом",
+  title: "Алтайлес - дома из клееного бруса",
   description: "",
   icons: {
     icon: "icon.svg?v=2",
