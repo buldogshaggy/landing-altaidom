@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Алтайлес - дома из клееного бруса",
   description: "",
   icons: {
-    icon: "icon.svg?v=2",
+    icon: "icon.svg",
   },
 };
 
